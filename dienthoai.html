@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<input type="button" id="" onclick="myNokia.sacpin()" value="sacpin">
+	<input type="button" id="" onclick="myNokia.sudungpin()" value="sudung">
+	<input type="button" id="" onclick="myNokia.battatdienthoai()" value="battat">
+	<a id=pin </a>
+	<script>
+		class Mobile {
+			constructor (_type,_pin,_status) {
+				 this.type = _type;
+				 this.pin =_pin;
+				 this.status = _status;
+				 this.hopthudi =[];
+				 this.hopthuden = [];
+				}
+			sacpin() {
+				if(this.pin < 100){
+					this.pin +=1;
+					document.getElementById("pin").innerText = this.pin + "%";
+				}
+				else{
+					alert("Pin đầy!")
+				}
+			}
+			sudungpin() {
+				if(this.pin > 1){
+					this.pin -=1;
+					document.getElementById("pin").innerText = this.pin + "%";
+				}
+				else{
+					alert("Tắt máy!")
+					this.battatdienthoai();
+				}
+			}
+			kiemtrabattat() {
+	     		if(this.status){
+	     			alert("đang on");
+	     		}
+	     		else{
+	     			alert("đang off");
+	     		}
+	     	}
+			battatdienthoai(){
+				if(this.status){
+					this.status = false;
+				}
+				else {
+					this.status = true;
+				}
+				this.kiemtrabattat();
+			}
+
+			hopthuden1(tin){
+				alert(tin);
+				this.hopthuden.push(tin);
+			}
+			hopthudi1(nguoinhan,tin){
+				this.hopthudi.push(tin);
+				nguoinhan.hopthuden1(tin);
+			}
+		}
+		var myNokia = new Mobile('Nokia',50,true);
+		var myIphone = new Mobile('Iphone',60,true);
+		//myNokia.sacpin();
+		//myNokia.sacpin();
+		//myNokia.battatdienthoai();
+		//myNokia.kiemtrabattat();
+		//myNokia.hopthudi1(myIphone, "Hello");
+		document.getElementById("pin").innerText = myNokia.pin + "%";
+		//alert(myNokia.type + myNokia.pin +  myNokia.status);
+
+	</script>
+	
+</body>
+</html>
